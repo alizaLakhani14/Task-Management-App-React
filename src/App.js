@@ -24,14 +24,20 @@ class App extends Component {
 		// 	{ title: 'hello11', description: 'world11', dueDate: '', id: 12 },
 		// 	{ title: 'hello12', description: 'world2', dueDate: '', id: 13 }
 		// ],
-		tasks: localStorage.getItem('myTasks' || []),
+		tasks: JSON.parse(localStorage.getItem('myTasks')) || [],
 		fetchedObject: {},
 		currentPage: 1,
 		tasksPerPage: 10
 	};
 
 	componentDidMount() {
-		localStorage.setItem('myTasks', this.state.tasks);
+		localStorage.setItem('myTasks', JSON.stringify(this.state.tasks));
+
+	}
+	componentDidUpdate() {
+
+		localStorage.setItem('myTasks', JSON.stringify(this.state.tasks));
+
 	}
 	// Open or Close Modal
 	toggleModal = () => {
@@ -87,7 +93,7 @@ class App extends Component {
 	render() {
 		const indexOfLastTask = this.state.currentPage * this.state.tasksPerPage;
 		const indexOfFirstTask = indexOfLastTask - this.state.tasksPerPage;
-		const currentTasks = this.state.tasks.slice(indexOfFirstTask, indexOfLastTask);
+		const currentTasks = this.state.tasks !== null && this.state.tasks.slice(indexOfFirstTask, indexOfLastTask);
 		console.log(this.state.tasks);
 		return (
 			<Layout className="layout-style">
@@ -129,7 +135,7 @@ class App extends Component {
 						<Icon type="plus" />
 					</Button>
 				</div>
-				{this.state.tasks.length > 0 ? (
+				{this.state.tasks !== null && this.state.tasks.length > 0 ? (
 					<div className="pagination">
 						<PaginationCount
 							tasks={this.state.tasks}
