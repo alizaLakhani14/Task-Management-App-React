@@ -1,7 +1,15 @@
-.button{
-    margin:5px;
+.button {
+	margin: 5px;
 }
 
-.Task{
-    text-align: center;
+.Task {
+	text-align: center;
+}
+
+img {
+	height: 15em;
+	width: 15em;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }

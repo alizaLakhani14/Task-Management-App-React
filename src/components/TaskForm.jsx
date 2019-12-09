@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import './Form.css';
 import * as Yup from 'yup';
 import Error from './Error';
-import { Input, DatePicker, Button, Form, Upload } from 'antd';
+import { Input, DatePicker, Button, Upload } from 'antd';
 import moment from 'moment';
 // import ImageField from './ImageField';
 
@@ -34,9 +34,27 @@ function disabledDateTime() {
 	};
 }
 
-
-
 const TaskForm = ({ handleValues, fetchedValues, updateValues, closeModal }) => {
+	const [ image, setImage ] = useState(null);
+	const getBase64 = (img, callback) => {
+		const reader = new FileReader();
+		reader.addEventListener('load', () => callback(reader.result));
+		reader.readAsDataURL(img);
+	};
+	const handleThumbImageChange = (info) => {
+		if (info.file.status === 'done' || info.file.status === 'error') {
+			getBase64(info.file.originFileObj, (thumbnailImageUrl) => setImage(thumbnailImageUrl));
+		}
+	};
+	useEffect(
+		() => {
+			console.log({ fetchedValues });
+			if (fetchedValues !== {}) {
+				setImage(fetchedValues.image);
+			}
+		},
+		[ fetchedValues ]
+	);
 	return (
 		<Formik
 			initialValues={{
@@ -47,11 +65,12 @@ const TaskForm = ({ handleValues, fetchedValues, updateValues, closeModal }) => 
 						? moment(fetchedValues.dueDate)
 						: moment('00:00:00', 'HH:mm:ss')
 			}}
+			// enableReinitialize={true}
 			validationSchema={validationSchema}
 			onSubmit={(values, { setSubmitting, resetForm }) => {
 				Object.keys(fetchedValues).length > 0
-					? updateValues({ ...values, id: fetchedValues.id })
-					: handleValues({ ...values, id: Math.floor(Math.random() * 100) });
+					? updateValues({ ...values, id: fetchedValues.id, image })
+					: handleValues({ ...values, id: Math.floor(Math.random() * 100), image });
 				setSubmitting(true);
 				resetForm();
 				closeModal();
@@ -101,9 +120,23 @@ const TaskForm = ({ handleValues, fetchedValues, updateValues, closeModal }) => 
 						/>
 						{errors.dueDate ? <Error message={errors.dueDate} /> : null}
 					</div>
-					 <div className="form-field">
-						{/* <ImageField /> */}
-					</div> 
+					<div className="form-field">
+						<Upload
+							name="avatar"
+							listType="picture-card"
+							className="avatar-uploader"
+							showUploadList={false}
+							onChange={handleThumbImageChange}
+						>
+							<Button>Upload</Button>
+							{/* {image !== null && <img src={image} alt="avatar" style={{ width: '100%' }} />} */}
+							{image !== null ? (
+								<img src={image} alt='avatar' style={{ width: '100%' }} />
+							) : (
+								''
+							)}
+						</Upload>
+					</div>
 					<div className="form-field">
 						<Button type="primary" disable={isSubmitting} onClick={handleSubmit}>
 							Submit

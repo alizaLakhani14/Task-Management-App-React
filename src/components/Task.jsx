@@ -7,6 +7,7 @@ const Task = ({ task, deleteCard, openModal, editingAvailable }) => {
 		<Card title={task.title} style={{ width: 300 }} className="Task">
 			<p>{`Description: ${task.description}`}</p>
 			<p>{`DueDate: ${task.dueDate}`}</p>
+			<img src={task.image} alt="img" />
 			<Button
 				type="primary"
 				shape="circle"

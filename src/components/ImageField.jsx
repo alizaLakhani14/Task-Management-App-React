@@ -1,43 +1,36 @@
-import React, { Component } from 'react';
-import { Form, Upload, Button, Icon } from 'antd';
+import React, { useState } from "react";
+import { Upload, Button } from "antd";
+// import "./App.css";
 
-class ImageField extends Component {
-	handleSubmit = (e) => {
-		e.preventDefault();
-		this.props.form.validateFields((err, values) => {
-			if (!err) {
-				console.log('Received values of form: ', values);
-			}
-		});
-	};
-
-	normFile = (e) => {
-		console.log('Upload event:', e);
-		if (Array.isArray(e)) {
-			return e;
-		}
-		return e && e.fileList;
-	};
-	render() {
-		// const { getFieldDecorator } = this.props.form;
-		return (
-			<div>
-				<Form.Item label="Upload" extra="longgggggggggggggggggggggggggggggggggg">
-					{/* {getFieldDecorator('upload', {
-						valuePropName: 'fileList',
-						getValueFromEvent: this.normFile
-					})( */}
-					(
-					<Upload name="logo" action="/upload.do" listType="picture">
-						<Button>
-							<Icon type="upload" /> Click to upload
-						</Button>
-					</Upload>
-					)}
-				</Form.Item>
-			</div>
-		);
-	}
+function App() {
+  const [image, setImage] = useState(null);
+  const getBase64 = (img, callback) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => callback(reader.result));
+    reader.readAsDataURL(img);
+  };
+  const handleThumbImageChange = info => {
+    if (info.file.status === "done" || info.file.status === "error") {
+      getBase64(info.file.originFileObj, thumbnailImageUrl =>
+        setImage(thumbnailImageUrl)
+      );
+    }
+  };
+  return (
+    <div className="App">
+      <Upload
+        name="avatar"
+        listType="picture-card"
+        className="avatar-uploader"
+        showUploadList={false}
+        onChange={handleThumbImageChange}>
+        <Button>Upload</Button>
+        {image !== null && (
+          <img src={image} alt="avatar" style={{ width: "100%" }} />
+        )}
+      </Upload>
+    </div>
+  );
 }
 
-export default ImageField;
+export default App;

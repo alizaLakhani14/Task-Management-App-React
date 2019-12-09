@@ -24,24 +24,29 @@ class App extends Component {
 		// 	{ title: 'hello11', description: 'world11', dueDate: '', id: 12 },
 		// 	{ title: 'hello12', description: 'world2', dueDate: '', id: 13 }
 		// ],
-		tasks: [],
+		tasks: localStorage.getItem('myTasks' || []),
 		fetchedObject: {},
 		currentPage: 1,
 		tasksPerPage: 10
 	};
+
+	componentDidMount() {
+		localStorage.setItem('myTasks', this.state.tasks);
+	}
 	// Open or Close Modal
 	toggleModal = () => {
 		this.setState({
 			visible: !this.state.visible
 		});
 	};
-	j0;
 
 	// Handle values after form Submission
 	handleValues = (values) => {
 		this.setState({
 			tasks: [ ...this.state.tasks, values ]
 		});
+		// localStorage.setItem('myTasks', this.state.tasks)
+		// console.log(this.state.tasks);
 	};
 
 	// For deleting task
@@ -68,9 +73,8 @@ class App extends Component {
 				}
 				return element;
 			}),
-			fetchedObject:{}
+			fetchedObject: {}
 		});
-		
 	};
 
 	// Pagination functionality
