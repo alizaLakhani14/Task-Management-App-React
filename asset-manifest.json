@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/task-management-app/static/css/main.35f652c0.chunk.css",
-    "main.js": "/task-management-app/static/js/main.d4a39c5b.chunk.js",
-    "main.js.map": "/task-management-app/static/js/main.d4a39c5b.chunk.js.map",
-    "runtime-main.js": "/task-management-app/static/js/runtime-main.10bcaca6.js",
-    "runtime-main.js.map": "/task-management-app/static/js/runtime-main.10bcaca6.js.map",
-    "static/css/2.7f669fb7.chunk.css": "/task-management-app/static/css/2.7f669fb7.chunk.css",
-    "static/js/2.2fa180a5.chunk.js": "/task-management-app/static/js/2.2fa180a5.chunk.js",
-    "static/js/2.2fa180a5.chunk.js.map": "/task-management-app/static/js/2.2fa180a5.chunk.js.map",
-    "index.html": "/task-management-app/index.html",
-    "precache-manifest.fb0f00a923fe9e21cb954230919b753c.js": "/task-management-app/precache-manifest.fb0f00a923fe9e21cb954230919b753c.js",
-    "service-worker.js": "/task-management-app/service-worker.js",
-    "static/css/2.7f669fb7.chunk.css.map": "/task-management-app/static/css/2.7f669fb7.chunk.css.map",
-    "static/css/main.35f652c0.chunk.css.map": "/task-management-app/static/css/main.35f652c0.chunk.css.map"
+    "main.css": "/Task-Management-App-React/static/css/main.35f652c0.chunk.css",
+    "main.js": "/Task-Management-App-React/static/js/main.005dd137.chunk.js",
+    "main.js.map": "/Task-Management-App-React/static/js/main.005dd137.chunk.js.map",
+    "runtime-main.js": "/Task-Management-App-React/static/js/runtime-main.4c465102.js",
+    "runtime-main.js.map": "/Task-Management-App-React/static/js/runtime-main.4c465102.js.map",
+    "static/css/2.7f669fb7.chunk.css": "/Task-Management-App-React/static/css/2.7f669fb7.chunk.css",
+    "static/js/2.96302ed2.chunk.js": "/Task-Management-App-React/static/js/2.96302ed2.chunk.js",
+    "static/js/2.96302ed2.chunk.js.map": "/Task-Management-App-React/static/js/2.96302ed2.chunk.js.map",
+    "index.html": "/Task-Management-App-React/index.html",
+    "precache-manifest.cd3dcbb8053594cc0da6d644cfc565a8.js": "/Task-Management-App-React/precache-manifest.cd3dcbb8053594cc0da6d644cfc565a8.js",
+    "service-worker.js": "/Task-Management-App-React/service-worker.js",
+    "static/css/2.7f669fb7.chunk.css.map": "/Task-Management-App-React/static/css/2.7f669fb7.chunk.css.map",
+    "static/css/main.35f652c0.chunk.css.map": "/Task-Management-App-React/static/css/main.35f652c0.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.10bcaca6.js",
+    "static/js/runtime-main.4c465102.js",
     "static/css/2.7f669fb7.chunk.css",
-    "static/js/2.2fa180a5.chunk.js",
+    "static/js/2.96302ed2.chunk.js",
     "static/css/main.35f652c0.chunk.css",
-    "static/js/main.d4a39c5b.chunk.js"
+    "static/js/main.005dd137.chunk.js"
   ]
 }
