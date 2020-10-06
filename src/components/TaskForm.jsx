@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import Error from './Error';
 import { Input, DatePicker, Button, Upload } from 'antd';
 import moment from 'moment';
-// import ImageField from './ImageField';
+
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required('Must enter a title'),
